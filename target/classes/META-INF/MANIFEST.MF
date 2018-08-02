@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: ws-academico
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: eberson
+Implementation-Vendor-Id: com.wsacademico.api
+Build-Jdk: 1.8.0_181
+Implementation-URL: http://projects.spring.io/spring-boot/ws-academico
+ /
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
