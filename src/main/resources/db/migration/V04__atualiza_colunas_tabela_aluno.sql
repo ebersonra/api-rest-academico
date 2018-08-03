@@ -1,4 +1,0 @@
-ALTER TABLE aluno DROP COLUMN nome;
-ALTER TABLE aluno DROP COLUMN cpf;
-ALTER TABLE aluno DROP COLUMN pessoa_sexo;
-ALTER TABLE aluno DROP COLUMN estado_civil;

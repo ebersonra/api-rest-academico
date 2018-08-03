@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.wsacademico.api.comum.EstadoCivil;
@@ -27,7 +28,7 @@ import com.wsacademico.api.comum.RacaCor;
 @Table(name="cad_pessoa")
 public class Pessoa {
 
-	private Long id;
+	private Long ident;
 	private String nome;
 	private String sobrenome;
 	private String nomeMae;
@@ -54,11 +55,11 @@ public class Pessoa {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
+	public Long getIdent() {
+		return ident;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdent(Long ident) {
+		this.ident = ident;
 	}
 	
 	@NotNull
@@ -88,6 +89,7 @@ public class Pessoa {
 	}
 	
 	@NotNull
+	@CPF
 	public String getCpf() {
 		return cpf;
 	}
@@ -179,6 +181,7 @@ public class Pessoa {
 	}
 	
 	@NotNull
+	@Column(name="ativo", columnDefinition="boolean default false", insertable=false, updatable=true)
 	public Boolean getAtivo() {
 		return ativo;
 	}
@@ -186,6 +189,8 @@ public class Pessoa {
 		this.ativo = ativo;
 	}
 	
+	@NotNull
+	@Column(name="nome_mae")
 	public String getNomeMae() {
 		return nomeMae;
 	}
@@ -193,6 +198,8 @@ public class Pessoa {
 		this.nomeMae = nomeMae;
 	}
 	
+	@NotNull
+	@Column(name="nome_pai")
 	public String getNomePai() {
 		return nomePai;
 	}
@@ -214,6 +221,7 @@ public class Pessoa {
 		this.cnh = cnh;
 	}
 	
+	@NotNull
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="data_nascimento")
 	public LocalDate getDataNascimento() {
@@ -227,7 +235,7 @@ public class Pessoa {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((ident == null) ? 0 : ident.hashCode());
 		return result;
 	}
 	@Override
@@ -239,15 +247,11 @@ public class Pessoa {
 		if (getClass() != obj.getClass())
 			return false;
 		Pessoa other = (Pessoa) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (ident == null) {
+			if (other.ident != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!ident.equals(other.ident))
 			return false;
 		return true;
 	}
-	
-	
-	
-	
 }

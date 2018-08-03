@@ -11,20 +11,20 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="aluno")
+@Table(name="cad_aluno")
 public class Aluno {
 	
-	private Long id;
+	private Long ident;
 	private Long codigoAluno;
 	private LocalDate dataNascimento;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
+	public Long getIdent() {
+		return ident;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdent(Long ident) {
+		this.ident = ident;
 	}
 	
 	@NotNull
@@ -48,7 +48,7 @@ public class Aluno {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((ident == null) ? 0 : ident.hashCode());
 		return result;
 	}
 	@Override
@@ -60,10 +60,10 @@ public class Aluno {
 		if (getClass() != obj.getClass())
 			return false;
 		Aluno other = (Aluno) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (ident == null) {
+			if (other.ident != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!ident.equals(other.ident))
 			return false;
 		return true;
 	}

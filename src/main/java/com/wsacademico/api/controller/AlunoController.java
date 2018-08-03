@@ -1,6 +1,7 @@
 package com.wsacademico.api.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -40,17 +41,17 @@ public class AlunoController {
 	public ResponseEntity<Aluno> novo(@Valid @RequestBody Aluno aluno, HttpServletResponse response) {
 		
 		Aluno alunoNovo = alunoRepository.save(aluno);
-		publisher.publishEvent(new RecursoCriadoEvent(this, response, alunoNovo.getId()));
+		publisher.publishEvent(new RecursoCriadoEvent(this, response, alunoNovo.getIdent()));
 		return ResponseEntity.status(HttpStatus.CREATED).body(alunoNovo);
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<Aluno> alunoPorId(@PathVariable Long id) {
+	@GetMapping("/{ident}")
+	public ResponseEntity<Aluno> alunoPorId(@PathVariable Long ident) {
 		
-		Aluno aluno = alunoRepository.findOne(id);
-		if(!(aluno == null)) {
+		Optional<Aluno> aluno = alunoRepository.findById(ident);
+		if(aluno.isPresent()) {
 			
-			return ResponseEntity.ok(aluno);
+			return ResponseEntity.ok(aluno.get());
 		}
 		
 		return ResponseEntity.notFound().build();

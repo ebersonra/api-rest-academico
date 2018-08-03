@@ -1,5 +1,7 @@
 package com.wsacademico.api.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -23,10 +25,10 @@ public class PessoaService {
 	 * 
 	 * @return entidade pessoa atualizada.
 	 * */
-	public Pessoa atualizar(Long id, Pessoa pessoa) {
+	public Pessoa atualizar(Long ident, Pessoa pessoa) {
 		
-		Pessoa pessoaPesquisada = pessoaPorCodigo(id);
-		BeanUtils.copyProperties(pessoa, pessoaPesquisada, "id");
+		Pessoa pessoaPesquisada = pessoaPorCodigo(ident);
+		BeanUtils.copyProperties(pessoa, pessoaPesquisada, "ident");
 		return pessoaRepository.save(pessoaPesquisada);
 	}
 	
@@ -46,12 +48,12 @@ public class PessoaService {
 	
 	private Pessoa pessoaPorCodigo(Long id) {
 		
-		Pessoa pessoaPesquisada = pessoaRepository.findOne(id);
-		if(pessoaPesquisada == null) {
+		Optional<Pessoa> pessoaPesquisada = pessoaRepository.findById(id);
+		if(!pessoaPesquisada.isPresent()) {
 			
 			throw new EmptyResultDataAccessException(1);
 		}
-		return pessoaPesquisada;
+		return pessoaPesquisada.get();
 	}
 
 }

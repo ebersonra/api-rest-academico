@@ -1,7 +1,0 @@
-ALTER TABLE pessoa ADD logradouro VARCHAR(60);
-ALTER TABLE pessoa ADD numero VARCHAR(11);
-ALTER TABLE pessoa ADD complemento VARCHAR(30);
-ALTER TABLE pessoa ADD bairro VARCHAR(60);
-ALTER TABLE pessoa ADD cep VARCHAR(12);
-ALTER TABLE pessoa ADD cidade VARCHAR(60);
-ALTER TABLE pessoa ADD estado VARCHAR(2);

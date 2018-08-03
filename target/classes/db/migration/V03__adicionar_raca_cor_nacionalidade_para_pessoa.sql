@@ -1,2 +1,0 @@
-ALTER TABLE pessoa ADD raca_cor VARCHAR(60) NOT NULL;
-ALTER TABLE pessoa ADD nacionalidade VARCHAR(60) NOT NULL;

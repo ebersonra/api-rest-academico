@@ -12,7 +12,7 @@ public class InformacoesPessoa {
 	
 	/*Dados RG*/
 	private String orgaoEmissor;
-	private String estado;
+	private String estadoOrgaoEmissorRG;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataEmissaoRg;
@@ -32,11 +32,11 @@ public class InformacoesPessoa {
 		this.orgaoEmissor = orgaoEmissor;
 	}
 
-	public String getEstado() {
-		return estado;
+	public String getEstadoOrgaoEmissorRG() {
+		return estadoOrgaoEmissorRG;
 	}
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setEstadoOrgaoEmissorRG(String estadoOrgaoEmissorRG) {
+		this.estadoOrgaoEmissorRG = estadoOrgaoEmissorRG;
 	}
 
 	public LocalDate getDataEmissaoRg() {
@@ -73,7 +73,4 @@ public class InformacoesPessoa {
 	public void setDataEmissaoTituloEleitor(LocalDate dataEmissaoTituloEleitor) {
 		this.dataEmissaoTituloEleitor = dataEmissaoTituloEleitor;
 	}
-	
-	
-	
 }

@@ -1,6 +1,7 @@
 package com.wsacademico.api.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -47,40 +48,40 @@ public class PessoaController {
 	public ResponseEntity<Pessoa> nova(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response){
 		
 		Pessoa pessoaNovo = pessoaRepository.save(pessoa);
-		publisher.publishEvent(new RecursoCriadoEvent(this, response, pessoaNovo.getId()));
+		publisher.publishEvent(new RecursoCriadoEvent(this, response, pessoaNovo.getIdent()));
 		return ResponseEntity.status(HttpStatus.CREATED).body(pessoaNovo);
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<Pessoa> pessoaPorId(@PathVariable Long id){
+	@GetMapping("/{ident}")
+	public ResponseEntity<Pessoa> pessoaPorId(@PathVariable Long ident){
 		
-		Pessoa pessoa = pessoaRepository.findOne(id);
+		Optional<Pessoa> pessoa = pessoaRepository.findById(ident);
 		
-		if(!(pessoa == null)) {
+		if(pessoa.isPresent()) {
 			
-			return ResponseEntity.ok(pessoa);
+			return ResponseEntity.ok(pessoa.get());
 		}
 		return ResponseEntity.notFound().build();
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/{ident}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable Long id) {
+	public void remover(@PathVariable Long ident) {
 		
-		pessoaRepository.delete(id);
+		pessoaRepository.deleteById(ident);
 	}
 	
-	@PutMapping("/{id}")
-	public ResponseEntity<Pessoa> atualizar(@PathVariable Long id, @Valid @RequestBody Pessoa pessoa){
+	@PutMapping("/{ident}")
+	public ResponseEntity<Pessoa> atualizar(@PathVariable Long ident, @Valid @RequestBody Pessoa pessoa){
 		
-		Pessoa pessoaAtualizada = pessoaService.atualizar(id, pessoa);
+		Pessoa pessoaAtualizada = pessoaService.atualizar(ident, pessoa);
 		return ResponseEntity.ok(pessoaAtualizada);
 	}
 	
-	@PutMapping("/{id}/ativo")
+	@PutMapping("/{ident}/ativo")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void atualizarPropriedadeAtivo(@PathVariable Long id, @RequestBody Boolean ativo) {
+	public void atualizarPropriedadeAtivo(@PathVariable Long ident, @RequestBody Boolean ativo) {
 		
-		pessoaService.atualizarPropriedadeAtivo(id, ativo);
+		pessoaService.atualizarPropriedadeAtivo(ident, ativo);
 	}
 }
