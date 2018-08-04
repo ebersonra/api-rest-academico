@@ -1,5 +1,6 @@
 package com.wsacademico.api.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="sys_usuario")
+@Table(name="SYS_USUARIO")
 public class Usuario {
 
 	@Id
@@ -20,6 +21,13 @@ public class Usuario {
 	private String nome;
 	private String email;
 	private String senha;
+	private String login;
+	
+	private Boolean ativo;
+	
+	private LocalDate dataCadastro;
+	private LocalDate dataUltimoAcesso;
+	private LocalDate dataDesativacao;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="sys_usuario_permissao", joinColumns=@JoinColumn(name="ident_usuario"), 

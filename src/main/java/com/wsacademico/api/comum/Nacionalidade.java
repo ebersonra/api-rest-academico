@@ -38,5 +38,8 @@ public enum Nacionalidade {
 		this.descricaoNacionalidade = descricaoNacionalidade;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return this.descricaoNacionalidade;
+	}
 }

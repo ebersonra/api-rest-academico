@@ -20,12 +20,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.wsacademico.api.comum.EstadoCivil;
 import com.wsacademico.api.comum.Nacionalidade;
 import com.wsacademico.api.comum.PessoaGrauParentesco;
+import com.wsacademico.api.comum.PessoaReligiao;
 import com.wsacademico.api.comum.PessoaSexo;
 import com.wsacademico.api.comum.PessoaTipo;
 import com.wsacademico.api.comum.RacaCor;
 
 @Entity
-@Table(name="cad_pessoa")
+@Table(name="CAD_PESSOA")
 public class Pessoa {
 
 	private Long ident;
@@ -38,6 +39,8 @@ public class Pessoa {
 	private String rg;
 	private String pis;
 	private String cnh;
+	private String cpfPai;
+	private String cpfMae;
 	
 	private Long idade;
 	
@@ -51,6 +54,8 @@ public class Pessoa {
 	private PessoaGrauParentesco pessoaGrauParentesco;
 	private Endereco endereco;
 	private InformacoesPessoa informacoesPessoa;
+	private PessoaReligiao pessoaReligiao;
+	
 	private Boolean ativo;
 	
 	@Id
@@ -107,7 +112,7 @@ public class Pessoa {
 	
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	@Column(name="estado_civil")
+	@Column(name="ESTADO_CIVIL")
 	public EstadoCivil getEstadoCivil() {
 		return estadoCivil;
 	}
@@ -117,7 +122,7 @@ public class Pessoa {
 	
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	@Column(name="pessoa_sexo")
+	@Column(name="PESSOA_SEXO")
 	public PessoaSexo getPessoaSexo() {
 		return pessoaSexo;
 	}
@@ -127,7 +132,7 @@ public class Pessoa {
 	
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	@Column(name="pessoa_tipo")
+	@Column(name="PESSOA_TIPO")
 	public PessoaTipo getPessoaTipo() {
 		return pessoaTipo;
 	}
@@ -137,7 +142,7 @@ public class Pessoa {
 		
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	@Column(name="raca_cor")
+	@Column(name="RACA_COR")
 	public RacaCor getRacaCor() {
 		return racaCor;
 	}
@@ -147,7 +152,7 @@ public class Pessoa {
 	
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	@Column(name="nacionalidade")
+	@Column(name="NACIONALIDADE")
 	public Nacionalidade getNacionalidade() {
 		return nacionalidade;
 	}
@@ -156,7 +161,7 @@ public class Pessoa {
 	}
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name="pessoa_grau_parentesco")
+	@Column(name="PESSOA_GRAU_PARENTESCO")
 	public PessoaGrauParentesco getPessoaGrauParentesco() {
 		return pessoaGrauParentesco;
 	}
@@ -190,7 +195,7 @@ public class Pessoa {
 	}
 	
 	@NotNull
-	@Column(name="nome_mae")
+	@Column(name="NOME_MAE")
 	public String getNomeMae() {
 		return nomeMae;
 	}
@@ -199,7 +204,7 @@ public class Pessoa {
 	}
 	
 	@NotNull
-	@Column(name="nome_pai")
+	@Column(name="NOME_PAI")
 	public String getNomePai() {
 		return nomePai;
 	}
@@ -223,7 +228,7 @@ public class Pessoa {
 	
 	@NotNull
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	@Column(name="data_nascimento")
+	@Column(name="DATA_NASCIMENTO")
 	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="cad_aluno")
+@Table(name="CAD_ALUNO")
 public class Aluno {
 	
 	private Long ident;
