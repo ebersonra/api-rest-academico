@@ -12,6 +12,10 @@ public class Endereco {
 	private String cep;
 	private String cidade;
 	private String estado;
+	private String cidadeNatural;
+	private String estadoNatural;
+	private String codigoIbge;
+	private String codigoInepCidade;
 	
 	public String getLogradouro() {
 		return logradouro;
