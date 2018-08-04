@@ -11,11 +11,11 @@ public class InformacoesPessoa {
 
 	
 	/*Dados RG*/
-	private String orgaoEmissor;
+	private String orgaoEmissorRG;
 	private String estadoOrgaoEmissorRG;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private LocalDate dataEmissaoRg;
+	private LocalDate dataEmissaoRG;
 	
 	/*Titulo Eleitor*/
 	private String numeroTituloEleitor;
@@ -24,12 +24,18 @@ public class InformacoesPessoa {
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataEmissaoTituloEleitor;
+	
+	private String habilidadeMotora;
+	private String rne;
+	private Long quantidadeDependentes;
+	private String idiomaNativo;
+	private String necessidadeEspecial;
 
-	public String getOrgaoEmissor() {
-		return orgaoEmissor;
+	public String getOrgaoEmissorRG() {
+		return orgaoEmissorRG;
 	}
-	public void setOrgaoEmissor(String orgaoEmissor) {
-		this.orgaoEmissor = orgaoEmissor;
+	public void setOrgaoEmissorRG(String orgaoEmissorRG) {
+		this.orgaoEmissorRG = orgaoEmissorRG;
 	}
 
 	public String getEstadoOrgaoEmissorRG() {
@@ -39,11 +45,11 @@ public class InformacoesPessoa {
 		this.estadoOrgaoEmissorRG = estadoOrgaoEmissorRG;
 	}
 
-	public LocalDate getDataEmissaoRg() {
-		return dataEmissaoRg;
+	public LocalDate getDataEmissaoRG() {
+		return dataEmissaoRG;
 	}
-	public void setDataEmissaoRg(LocalDate dataEmissaoRg) {
-		this.dataEmissaoRg = dataEmissaoRg;
+	public void setDataEmissaoRG(LocalDate dataEmissaoRG) {
+		this.dataEmissaoRG = dataEmissaoRG;
 	}
 
 	public String getNumeroTituloEleitor() {

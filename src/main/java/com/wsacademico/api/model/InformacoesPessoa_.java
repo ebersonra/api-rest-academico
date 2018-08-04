@@ -11,9 +11,9 @@ public abstract class InformacoesPessoa_ {
 
 	public static volatile SingularAttribute<InformacoesPessoa, String> sessaoTituloEleitor;
 	public static volatile SingularAttribute<InformacoesPessoa, LocalDate> dataEmissaoTituloEleitor;
-	public static volatile SingularAttribute<InformacoesPessoa, String> orgaoEmissor;
+	public static volatile SingularAttribute<InformacoesPessoa, String> orgaoEmissorRG;
 	public static volatile SingularAttribute<InformacoesPessoa, String> zonaTituloEleitor;
-	public static volatile SingularAttribute<InformacoesPessoa, LocalDate> dataEmissaoRg;
+	public static volatile SingularAttribute<InformacoesPessoa, LocalDate> dataEmissaoRG;
 	public static volatile SingularAttribute<InformacoesPessoa, String> numeroTituloEleitor;
 	public static volatile SingularAttribute<InformacoesPessoa, String> estadoOrgaoEmissorRG;
 
