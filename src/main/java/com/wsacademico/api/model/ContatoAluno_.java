@@ -5,7 +5,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ContatoAluno.class)
-public abstract class ContatoPessoa_ {
+public abstract class ContatoAluno_ {
 
 
 }

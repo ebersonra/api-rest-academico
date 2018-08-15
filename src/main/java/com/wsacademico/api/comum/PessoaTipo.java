@@ -7,7 +7,10 @@ public enum PessoaTipo {
 	COORDENADOR(3, "COORD", "Coordenador(a)"),
 	FUNCIONARIO(4, "FUN", "Funcionário(a)"),
 	SUPORTE_TI(5, "SUP", "Suporte Dpto Tecnologia"),
-	RESPONSAVEL(6, "RES", "Responsável Legal");
+	RESPONSAVEL(6, "RES", "Responsável Legal"),
+	ALUNO_VETERANO(7, "ALU_VET", "Aluno Veterano"),
+	ALUNO_CALOURO(8,"ALU_CAL","Aluno Calouro"),
+	ALUNO_FIES(9,"ALU_FIES","Aluno FIES");
 	
 	private Integer codigo;
 	private String siglaPessoaTipo;

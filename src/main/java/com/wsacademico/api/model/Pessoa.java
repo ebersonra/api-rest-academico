@@ -10,7 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -25,16 +25,19 @@ import com.wsacademico.api.comum.PessoaSexo;
 import com.wsacademico.api.comum.PessoaTipo;
 import com.wsacademico.api.comum.RacaCor;
 
-@Entity
-@Table(name="CAD_PESSOA")
+@MappedSuperclass
 public class Pessoa {
 
 	private Long ident;
+	
+	/*Atributos especificos sobre
+	 *a pessoa*/
 	private String nome;
 	private String sobrenome;
 	private String nomeMae;
 	private String nomePai;
 	
+	/*Documentação*/
 	private String cpf;
 	private String rg;
 	private String pis;
