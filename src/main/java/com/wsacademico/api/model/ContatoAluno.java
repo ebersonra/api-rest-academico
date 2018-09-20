@@ -13,6 +13,7 @@ public class ContatoAluno {
 
 	private Long ident;
 	
+	/*Muitos contatos para um Aluno*/
 	@ManyToOne
 	private Aluno aluno;
 	private TipoEmail tipoEmail;
