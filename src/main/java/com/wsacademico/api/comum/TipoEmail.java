@@ -1,5 +1,8 @@
 package com.wsacademico.api.comum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum TipoEmail {
 	
 	COMERCIAL(0,"Comercial"),
@@ -34,5 +37,13 @@ public enum TipoEmail {
 	public String toString() {
 		return this.descricao;
 	}
-
+	
+	public static List<TipoEmail> getTodosTiposEmails(){
+		List<TipoEmail> tiposEmails = new ArrayList<TipoEmail>();
+		
+		for (TipoEmail tipoEmail : TipoEmail.values()) {
+			tiposEmails.add(tipoEmail);
+		}
+		return tiposEmails;
+	}
 }

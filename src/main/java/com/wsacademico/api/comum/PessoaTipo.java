@@ -1,5 +1,8 @@
 package com.wsacademico.api.comum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum PessoaTipo {
 	
 	ALUNO(1, "ALU", "Aluno"),
@@ -49,6 +52,15 @@ public enum PessoaTipo {
 	@Override
 	public String toString() {
 		return this.descricao;
+	}
+	
+	public static List<PessoaTipo> getTodosPessoaTipos(){
+		List<PessoaTipo> tipos = new ArrayList<PessoaTipo>();
+		
+		for (PessoaTipo pessoaTipo : PessoaTipo.values()) {
+			tipos.add(pessoaTipo);
+		}
+		return tipos;
 	}
 
 }

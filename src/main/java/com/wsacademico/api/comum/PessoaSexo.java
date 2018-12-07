@@ -1,5 +1,8 @@
 package com.wsacademico.api.comum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum PessoaSexo {
 	
 	MASCULINO(1, "MAS", "Masculino"),
@@ -43,5 +46,14 @@ public enum PessoaSexo {
 	@Override
 	public String toString() {
 		return this.descricaoCompleta;
+	}
+	
+	public static List<PessoaSexo> getTodosPessoasSexos(){
+		List<PessoaSexo> sexos = new ArrayList<PessoaSexo>();
+		
+		for (PessoaSexo pessoaSexo : PessoaSexo.values()) {
+			sexos.add(pessoaSexo);
+		}
+		return sexos;
 	}
 }

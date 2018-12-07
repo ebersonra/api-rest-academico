@@ -1,5 +1,8 @@
 package com.wsacademico.api.comum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum PessoaReligiao {
 
 	CATOLICA(1,"Igreja Católica Apostólica Romana"),
@@ -56,6 +59,15 @@ public enum PessoaReligiao {
 	@Override
 	public String toString() {
 		return this.descricao;
+	}
+	
+	public static List<PessoaReligiao> getTodasPessoasReligioes(){
+		List<PessoaReligiao> religioes = new ArrayList<PessoaReligiao>();
+		
+		for (PessoaReligiao pessoaReligiao : PessoaReligiao.values()) {
+			religioes.add(pessoaReligiao);
+		}
+		return religioes;
 	}
 	
 }

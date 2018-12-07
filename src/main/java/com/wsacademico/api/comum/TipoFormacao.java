@@ -1,5 +1,8 @@
 package com.wsacademico.api.comum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum TipoFormacao {
 
 	GRADUACAO(0,"","Graduação"),
@@ -44,5 +47,14 @@ public enum TipoFormacao {
 	@Override
 	public String toString() {
 		return this.descricaoCompleta;
+	}
+	
+	public static List<TipoFormacao> getTodosTiposFormacoes(){
+		List<TipoFormacao> tiposFormacoes = new ArrayList<TipoFormacao>();
+		
+		for (TipoFormacao tipoFormacao : TipoFormacao.values()) {
+			tiposFormacoes.add(tipoFormacao);
+		}
+		return tiposFormacoes;
 	}
 }

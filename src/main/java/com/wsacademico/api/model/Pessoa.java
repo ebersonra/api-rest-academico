@@ -1,21 +1,11 @@
 package com.wsacademico.api.model;
 
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Embedded;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.wsacademico.api.comum.EstadoCivil;
 import com.wsacademico.api.comum.Nacionalidade;
@@ -30,87 +20,33 @@ public class Pessoa {
 
 	private Long ident;
 	
-	/*Atributos especificos sobre
-	 *a pessoa*/
-	private String nome;
-	private String sobrenome;
-	private String nomeMae;
-	private String nomePai;
-	
-	/*Documentação*/
-	private String cpf;
-	private String rg;
-	private String pis;
-	private String cnh;
-	private String cpfPai;
-	private String cpfMae;
-	
-	private Long idade;
-	
-	private LocalDate dataNascimento;
-	
 	private EstadoCivil estadoCivil;
 	private PessoaSexo pessoaSexo;
 	private PessoaTipo pessoaTipo;
 	private RacaCor racaCor;
 	private Nacionalidade nacionalidade;
 	private PessoaGrauParentesco pessoaGrauParentesco;
-	private Endereco endereco;
-	private InformacoesPessoa informacoesPessoa;
 	private PessoaReligiao pessoaReligiao;
 	
-	private Boolean ativo;
+	private Endereco endereco;
+	private InformacoesPessoa informacoesPessoa;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//ATIVO=true ou INATIVO=false
+	private Boolean status;
+	//Default é false
+	//Flag para informar se o perfil é estrangeiro (Irá obrigar informar o CPF ou RNE)
+	private Boolean estrangeiro;
+	//Default é false. Sera usado para identificar cadastro de pessoa Juridica
+	//e exibir campo CNPJ na tela
+	private Boolean pessoaJuridica;
+	
+	private String observacao;
+	
 	public Long getIdent() {
 		return ident;
 	}
 	public void setIdent(Long ident) {
 		this.ident = ident;
-	}
-	
-	@NotNull
-	@Size(min= 5, max=50)
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	@NotNull
-	@Size(min= 5, max=50)
-	public String getSobrenome() {
-		return sobrenome;
-	}
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
-	
-	@NotNull
-	public Long getIdade() {
-		return idade;
-	}
-	public void setIdade(Long idade) {
-		this.idade = idade;
-	}
-	
-	@NotNull
-	@CPF
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	
-	@NotNull
-	public String getRg() {
-		return rg;
-	}
-	public void setRg(String rg) {
-		this.rg = rg;
 	}
 	
 	@NotNull
@@ -189,54 +125,21 @@ public class Pessoa {
 	}
 	
 	@NotNull
-	@Column(name="ativo", columnDefinition="boolean default false", insertable=false, updatable=true)
+	@Column(name="ATIVO", columnDefinition="boolean default false", insertable=false, updatable=true)
 	public Boolean getAtivo() {
-		return ativo;
+		return status;
 	}
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
-	}
-	
-	@NotNull
-	@Column(name="NOME_MAE")
-	public String getNomeMae() {
-		return nomeMae;
-	}
-	public void setNomeMae(String nomeMae) {
-		this.nomeMae = nomeMae;
+	public void setAtivo(Boolean status) {
+		this.status = status;
 	}
 	
-	@NotNull
-	@Column(name="NOME_PAI")
-	public String getNomePai() {
-		return nomePai;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "PESSOA_RELIGIAO")
+	public PessoaReligiao getPessoaReligiao() {
+		return pessoaReligiao;
 	}
-	public void setNomePai(String nomePai) {
-		this.nomePai = nomePai;
-	}
-	
-	public String getPis() {
-		return pis;
-	}
-	public void setPis(String pis) {
-		this.pis = pis;
-	}
-	
-	public String getCnh() {
-		return cnh;
-	}
-	public void setCnh(String cnh) {
-		this.cnh = cnh;
-	}
-	
-	@NotNull
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	@Column(name="DATA_NASCIMENTO")
-	public LocalDate getDataNascimento() {
-		return dataNascimento;
-	}
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setPessoaReligiao(PessoaReligiao pessoaReligiao) {
+		this.pessoaReligiao = pessoaReligiao;
 	}
 	
 	@Override

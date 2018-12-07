@@ -1,5 +1,8 @@
 package com.wsacademico.api.comum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum PessoaGrauParentesco {
 	
 	FILHO(0,"Filho"),
@@ -52,4 +55,12 @@ public enum PessoaGrauParentesco {
 		return this.descricao;
 	}
 
+	public static List<PessoaGrauParentesco> getTodosGrausParentescos(){
+		List<PessoaGrauParentesco> grausParentescos = new ArrayList<PessoaGrauParentesco>();
+		
+		for (PessoaGrauParentesco pessoaGrauParentesco : PessoaGrauParentesco.values()) {
+			grausParentescos.add(pessoaGrauParentesco);
+		}
+		return grausParentescos;
+	}
 }

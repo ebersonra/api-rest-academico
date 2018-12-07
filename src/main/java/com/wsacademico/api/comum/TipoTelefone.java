@@ -1,5 +1,8 @@
 package com.wsacademico.api.comum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum TipoTelefone {
 
 	COMERCIAL(0, "Comercial"),
@@ -36,5 +39,12 @@ public enum TipoTelefone {
 		return this.descricao;
 	}
 	
-
+	public static List<TipoTelefone> getTodosTiposTelefones(){
+		List<TipoTelefone> tiposTelefones = new ArrayList<>();
+		
+		for (TipoTelefone tipoTelefone : TipoTelefone.values()) {
+			tiposTelefones.add(tipoTelefone);
+		}
+		return tiposTelefones;
+	}
 }

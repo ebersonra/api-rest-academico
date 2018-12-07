@@ -9,6 +9,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Aluno_ extends com.wsacademico.api.model.Pessoa_ {
 
 	public static volatile SingularAttribute<Aluno, Long> codigoAluno;
+	public static volatile SingularAttribute<Aluno, Long> ident;
 
 }
 

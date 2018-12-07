@@ -1,11 +1,17 @@
 package com.wsacademico.api.comum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum EstadoCivil {
 
 	SOLTEIRO(1, "SOL", "Solteiro(a)"),
 	CASADO(2, "CAS", "Casado(a)"),
 	DIVORCIADO(3, "DIV", "Divorciado(a)"),
-	VIUVO(4, "VIU", "Viúvo(a)");
+	VIUVO(4, "VIU", "Viúvo(a)"),
+	UNIAO_ESTAVEL(5, "UNI", "União Estavel"),
+	DESQUITADO(6, "DES", "Desquitado"),
+	NAO_INFORMADO(7, "NAO", "Não Informado");
 	
 	private Integer codigo;
 	private String siglaEstadoCivil;
@@ -44,5 +50,14 @@ public enum EstadoCivil {
 	@Override
 	public String toString() {
 		return this.descricaoCompleta;
+	}
+	
+	public static List<EstadoCivil> getTodosEstadosCivis(){
+		List<EstadoCivil> estados = new ArrayList<EstadoCivil>();
+		
+		for (EstadoCivil estadoCivil : EstadoCivil.values()) {
+			estados.add(estadoCivil);
+		}
+		return estados;
 	}
 }

@@ -1,5 +1,8 @@
 package com.wsacademico.api.comum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum Nacionalidade {
 
 	ARGENTINO(1,"Argentina", "Argentino"),
@@ -41,5 +44,14 @@ public enum Nacionalidade {
 	@Override
 	public String toString() {
 		return this.descricaoNacionalidade;
+	}
+	
+	public static List<Nacionalidade> getTodasNacionalidades(){
+		List<Nacionalidade> nacionalidades = new ArrayList<Nacionalidade>();
+		
+		for (Nacionalidade nacionalidade : Nacionalidade.values()) {
+			nacionalidades.add(nacionalidade);
+		}
+		return nacionalidades;
 	}
 }

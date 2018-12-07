@@ -1,5 +1,8 @@
 package com.wsacademico.api.comum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum RacaCor {
 
 	BRANCA(1, "BRA", "Branca"),
@@ -43,6 +46,15 @@ public enum RacaCor {
 	@Override
 	public String toString() {
 		return this.descricao;
+	}
+	
+	public static List<RacaCor> getTodasRacasCores(){
+		List<RacaCor> racas = new ArrayList<RacaCor>();
+		
+		for (RacaCor racaCor : RacaCor.values()) {
+			racas.add(racaCor);
+		}
+		return racas;
 	}
 	
 }
