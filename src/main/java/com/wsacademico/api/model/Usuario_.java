@@ -21,5 +21,16 @@ public abstract class Usuario_ {
 	public static volatile SingularAttribute<Usuario, LocalDate> dataCadastro;
 	public static volatile SingularAttribute<Usuario, String> email;
 
+	public static final String DATA_ULTIMO_ACESSO = "dataUltimoAcesso";
+	public static final String SENHA = "senha";
+	public static final String PERMISSOES = "permissoes";
+	public static final String ATIVO = "ativo";
+	public static final String IDENT = "ident";
+	public static final String NOME = "nome";
+	public static final String DATA_DESATIVACAO = "dataDesativacao";
+	public static final String LOGIN = "login";
+	public static final String DATA_CADASTRO = "dataCadastro";
+	public static final String EMAIL = "email";
+
 }
 

@@ -29,5 +29,25 @@ public abstract class InformacoesPessoa_ {
 	public static volatile SingularAttribute<InformacoesPessoa, String> numeroTituloEleitor;
 	public static volatile SingularAttribute<InformacoesPessoa, String> nomeMae;
 
+	public static final String ORGAO_EMISSOR_RG = "orgaoEmissorRG";
+	public static final String ZONA_TITULO_ELEITOR = "zonaTituloEleitor";
+	public static final String DATA_EMISSAO_RG = "dataEmissaoRG";
+	public static final String NOME = "nome";
+	public static final String ESTADO_ORGAO_EMISSOR_RG = "estadoOrgaoEmissorRG";
+	public static final String SESSAO_TITULO_ELEITOR = "sessaoTituloEleitor";
+	public static final String DATA_EMISSAO_TITULO_ELEITOR = "dataEmissaoTituloEleitor";
+	public static final String CPF_MAE = "cpfMae";
+	public static final String IDADE = "idade";
+	public static final String RG = "rg";
+	public static final String CPF_PAI = "cpfPai";
+	public static final String CPF = "cpf";
+	public static final String NOME_PAI = "nomePai";
+	public static final String PIS = "pis";
+	public static final String CNH = "cnh";
+	public static final String SOBRENOME = "sobrenome";
+	public static final String DATA_NASCIMENTO = "dataNascimento";
+	public static final String NUMERO_TITULO_ELEITOR = "numeroTituloEleitor";
+	public static final String NOME_MAE = "nomeMae";
+
 }
 

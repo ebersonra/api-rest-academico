@@ -1,11 +1,21 @@
 package com.wsacademico.api.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.wsacademico.api.comum.EstadoCivil;
 import com.wsacademico.api.comum.Nacionalidade;
@@ -14,11 +24,14 @@ import com.wsacademico.api.comum.PessoaReligiao;
 import com.wsacademico.api.comum.PessoaSexo;
 import com.wsacademico.api.comum.PessoaTipo;
 import com.wsacademico.api.comum.RacaCor;
+import com.wsacademico.api.comum.TipoFormacao;
 
-@MappedSuperclass
+@Entity
+@Table(name="CAD_PESSOA")
 public class Pessoa {
 
 	private Long ident;
+	private Long identUsuarioCadastrou;
 	
 	private EstadoCivil estadoCivil;
 	private PessoaSexo pessoaSexo;
@@ -27,6 +40,7 @@ public class Pessoa {
 	private Nacionalidade nacionalidade;
 	private PessoaGrauParentesco pessoaGrauParentesco;
 	private PessoaReligiao pessoaReligiao;
+	private TipoFormacao tipoFormacao;
 	
 	private Endereco endereco;
 	private InformacoesPessoa informacoesPessoa;
@@ -42,6 +56,16 @@ public class Pessoa {
 	
 	private String observacao;
 	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private LocalDate dataCadastro;
+	
+	@ManyToOne
+	@JoinColumn(name="PROFESSOR_ID", referencedColumnName="PROFESSOR_ID")
+	private Professor professor;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="PESSOA_ID")
 	public Long getIdent() {
 		return ident;
 	}
@@ -106,6 +130,15 @@ public class Pessoa {
 	}
 	public void setPessoaGrauParentesco(PessoaGrauParentesco pessoaGrauParentesco) {
 		this.pessoaGrauParentesco = pessoaGrauParentesco;
+	}
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="TIPO_FORMACAO")
+	public TipoFormacao getTipoFormacao() {
+		return tipoFormacao;
+	}
+	public void setTipoFormacao(TipoFormacao tipoFormacao) {
+		this.tipoFormacao = tipoFormacao;
 	}
 	
 	@Embedded

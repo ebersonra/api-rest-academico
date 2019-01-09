@@ -7,6 +7,7 @@ import com.wsacademico.api.comum.PessoaReligiao;
 import com.wsacademico.api.comum.PessoaSexo;
 import com.wsacademico.api.comum.PessoaTipo;
 import com.wsacademico.api.comum.RacaCor;
+import com.wsacademico.api.comum.TipoFormacao;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
@@ -25,7 +26,21 @@ public abstract class Pessoa_ {
 	public static volatile SingularAttribute<Pessoa, InformacoesPessoa> informacoesPessoa;
 	public static volatile SingularAttribute<Pessoa, Nacionalidade> nacionalidade;
 	public static volatile SingularAttribute<Pessoa, PessoaSexo> pessoaSexo;
+	public static volatile SingularAttribute<Pessoa, TipoFormacao> tipoFormacao;
 	public static volatile SingularAttribute<Pessoa, PessoaGrauParentesco> pessoaGrauParentesco;
+
+	public static final String ATIVO = "ativo";
+	public static final String ENDERECO = "endereco";
+	public static final String RACA_COR = "racaCor";
+	public static final String PESSOA_RELIGIAO = "pessoaReligiao";
+	public static final String IDENT = "ident";
+	public static final String PESSOA_TIPO = "pessoaTipo";
+	public static final String ESTADO_CIVIL = "estadoCivil";
+	public static final String INFORMACOES_PESSOA = "informacoesPessoa";
+	public static final String NACIONALIDADE = "nacionalidade";
+	public static final String PESSOA_SEXO = "pessoaSexo";
+	public static final String TIPO_FORMACAO = "tipoFormacao";
+	public static final String PESSOA_GRAU_PARENTESCO = "pessoaGrauParentesco";
 
 }
 

@@ -5,13 +5,13 @@ import java.util.List;
 
 public enum EstadoCivil {
 
-	SOLTEIRO(1, "SOL", "Solteiro(a)"),
-	CASADO(2, "CAS", "Casado(a)"),
-	DIVORCIADO(3, "DIV", "Divorciado(a)"),
-	VIUVO(4, "VIU", "Viúvo(a)"),
-	UNIAO_ESTAVEL(5, "UNI", "União Estavel"),
-	DESQUITADO(6, "DES", "Desquitado"),
-	NAO_INFORMADO(7, "NAO", "Não Informado");
+	SOLTEIRO(0, "SOL", "Solteiro(a)"),
+	CASADO(1, "CAS", "Casado(a)"),
+	DIVORCIADO(2, "DIV", "Divorciado(a)"),
+	VIUVO(3, "VIU", "Viúvo(a)"),
+	UNIAO_ESTAVEL(4, "UNI", "União Estavel"),
+	DESQUITADO(5, "DES", "Desquitado"),
+	NAO_INFORMADO(6, "NAO", "Não Informado");
 	
 	private Integer codigo;
 	private String siglaEstadoCivil;

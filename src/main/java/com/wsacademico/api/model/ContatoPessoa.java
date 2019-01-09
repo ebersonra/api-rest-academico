@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -14,15 +17,18 @@ import com.wsacademico.api.comum.TipoTelefone;
 
 @Entity
 @Table(name="CAD_CONTATO_ALUNO")
-public class ContatoAluno {
+public class ContatoPessoa {
 
 	private Long ident;
-	private Aluno aluno;
+	private Pessoa pessoa;
 	private TipoEmail tipoEmail;
 	private TipoTelefone tipoTelefone;
 	private String email;
 	private String telefone;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="CONTATO_PESSOA_ID")
 	public Long getIdent() {
 		return ident;
 	}
@@ -30,14 +36,14 @@ public class ContatoAluno {
 		this.ident = ident;
 	}
 	
-	/*Muitos contatos para um Aluno*/
+	/*Muitos contatos para uma Pessoa*/
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="ALUNO_ID", referencedColumnName="ALUNO_ID")
-	public Aluno getAluno() {
-		return aluno;
+	@JoinColumn(name="PESSOA_ID", referencedColumnName="PESSOA_ID")
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 	
 	@Enumerated(EnumType.STRING)

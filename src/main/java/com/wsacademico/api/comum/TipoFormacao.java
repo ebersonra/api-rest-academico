@@ -5,13 +5,13 @@ import java.util.List;
 
 public enum TipoFormacao {
 
-	GRADUACAO(0,"","Graduação"),
-	POS_GRADUACAO(1,"","Pós Graduação"),
-	TECNICO(2,"","Tecnico"),
-	ENSINO_MEDIO(3,"","Ensino Medio"),
-	ENSINO_FUNDAMENTAL(4,"","Ensino Fundamental"),
-	DOUTORADO(5,"","Doutorado"),
-	MESTRADO(6,"","Mestrado");
+	GRADUACAO(0,"GRA","Graduação"),
+	POS_GRADUACAO(1,"POS","Pós Graduação"),
+	TECNICO(2,"TEC","Tecnico"),
+	ENSINO_MEDIO(3,"MED","Ensino Medio"),
+	ENSINO_FUNDAMENTAL(4,"FUN","Ensino Fundamental"),
+	DOUTORADO(5,"DOU","Doutorado"),
+	MESTRADO(6,"MES","Mestrado");
 	
 	private Integer codigo;
 	private String descricaoBasica;
