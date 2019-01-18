@@ -5,36 +5,24 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.wsacademico.api.comum.TipoEmail;
 import com.wsacademico.api.comum.TipoTelefone;
+import com.wsacademico.api.model.comum.EntidadeComum;
+import com.wsacademico.api.model.comum.Pessoa;
 
 @Entity
-@Table(name="CAD_CONTATO_ALUNO")
-public class ContatoPessoa {
+@Table(name="CAD_CONTATO_PESSOA")
+public class ContatoPessoa extends EntidadeComum {
 
-	private Long ident;
 	private Pessoa pessoa;
 	private TipoEmail tipoEmail;
 	private TipoTelefone tipoTelefone;
 	private String email;
 	private String telefone;
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="CONTATO_PESSOA_ID")
-	public Long getIdent() {
-		return ident;
-	}
-	public void setIdent(Long ident) {
-		this.ident = ident;
-	}
 	
 	/*Muitos contatos para uma Pessoa*/
 	@ManyToOne(fetch = FetchType.LAZY)

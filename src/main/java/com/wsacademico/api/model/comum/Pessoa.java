@@ -1,21 +1,12 @@
-package com.wsacademico.api.model;
-
-import java.time.LocalDate;
+package com.wsacademico.api.model.comum;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.Lob;
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.wsacademico.api.comum.EstadoCivil;
 import com.wsacademico.api.comum.Nacionalidade;
@@ -25,14 +16,12 @@ import com.wsacademico.api.comum.PessoaSexo;
 import com.wsacademico.api.comum.PessoaTipo;
 import com.wsacademico.api.comum.RacaCor;
 import com.wsacademico.api.comum.TipoFormacao;
+import com.wsacademico.api.model.Endereco;
+import com.wsacademico.api.model.InformacoesPessoa;
 
-@Entity
-@Table(name="CAD_PESSOA")
-public class Pessoa {
+@MappedSuperclass
+public abstract class Pessoa extends EntidadeComum {
 
-	private Long ident;
-	private Long identUsuarioCadastrou;
-	
 	private EstadoCivil estadoCivil;
 	private PessoaSexo pessoaSexo;
 	private PessoaTipo pessoaTipo;
@@ -43,35 +32,14 @@ public class Pessoa {
 	private TipoFormacao tipoFormacao;
 	
 	private Endereco endereco;
-	private InformacoesPessoa informacoesPessoa;
 	
 	//ATIVO=true ou INATIVO=false
-	private Boolean status;
+	private Boolean ativo;
 	//Default é false
 	//Flag para informar se o perfil é estrangeiro (Irá obrigar informar o CPF ou RNE)
 	private Boolean estrangeiro;
-	//Default é false. Sera usado para identificar cadastro de pessoa Juridica
-	//e exibir campo CNPJ na tela
-	private Boolean pessoaJuridica;
 	
 	private String observacao;
-	
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private LocalDate dataCadastro;
-	
-	@ManyToOne
-	@JoinColumn(name="PROFESSOR_ID", referencedColumnName="PROFESSOR_ID")
-	private Professor professor;
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="PESSOA_ID")
-	public Long getIdent() {
-		return ident;
-	}
-	public void setIdent(Long ident) {
-		this.ident = ident;
-	}
 	
 	@NotNull
 	@Enumerated(EnumType.STRING)
@@ -149,21 +117,20 @@ public class Pessoa {
 		this.endereco = endereco;
 	}
 	
-	@Embedded
-	public InformacoesPessoa getInformacoesPessoa() {
-		return informacoesPessoa;
+	@Column(name="ATIVO", columnDefinition="boolean default true", insertable=false, updatable=true)
+	public Boolean getAtivo() {
+		return ativo;
 	}
-	public void setInformacoesPessoa(InformacoesPessoa informacoesPessoa) {
-		this.informacoesPessoa = informacoesPessoa;
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 	
-	@NotNull
-	@Column(name="ATIVO", columnDefinition="boolean default false", insertable=false, updatable=true)
-	public Boolean getAtivo() {
-		return status;
+	@Column(name="ESTRANGEIRO", columnDefinition="boolean default false", insertable=false, updatable=true)
+	public Boolean getEstrangeiro() {
+		return estrangeiro;
 	}
-	public void setAtivo(Boolean status) {
-		this.status = status;
+	public void setEstrangeiro(Boolean estrangeiro) {
+		this.estrangeiro = estrangeiro;
 	}
 	
 	@Enumerated(EnumType.STRING)
@@ -175,27 +142,12 @@ public class Pessoa {
 		this.pessoaReligiao = pessoaReligiao;
 	}
 	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((ident == null) ? 0 : ident.hashCode());
-		return result;
+	@Lob
+	@Column(name="OBSERVACAO")
+	public String getObservacao() {
+		return observacao;
 	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pessoa other = (Pessoa) obj;
-		if (ident == null) {
-			if (other.ident != null)
-				return false;
-		} else if (!ident.equals(other.ident))
-			return false;
-		return true;
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 }

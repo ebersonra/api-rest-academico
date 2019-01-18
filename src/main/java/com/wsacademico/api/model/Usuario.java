@@ -1,60 +1,36 @@
 package com.wsacademico.api.model;
 
-import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import com.wsacademico.api.model.comum.Pessoa;
 
 @Entity
-@Table(name="SYS_USUARIO")
-public class Usuario {
+@Table(name="SEG_USUARIO")
+public class Usuario extends Pessoa {
 
-	@Id
-	private Long ident;
-	
-	private String nome;
-	private String email;
 	private String senha;
 	private String login;
+	private String email;
 	
-	private Boolean ativo;
-	
-	private LocalDate dataCadastro;
-	private LocalDate dataUltimoAcesso;
-	private LocalDate dataDesativacao;
-	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name="sys_usuario_permissao", joinColumns=@JoinColumn(name="ident_usuario"), 
-		inverseJoinColumns = @JoinColumn(name="ident_permissao"))
 	private List<Permissao> permissoes;
 
+	@Override
+	@Column(name="USUARIO_ID")
 	public Long getIdent() {
-		return ident;
-	}
-	public void setIdent(Long ident) {
-		this.ident = ident;
+		return super.getIdent();
 	}
 
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
+	@NotBlank
+	@Column(name="PASSWORD")
 	public String getSenha() {
 		return senha;
 	}
@@ -62,35 +38,31 @@ public class Usuario {
 		this.senha = senha;
 	}
 	
+	@NotBlank
+	@Column(name="LOGIN")
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	
+	@NotBlank
+	@Column(name="EMAIL")
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="SEG_USUARIO_PERMISSAO", joinColumns=@JoinColumn(name="USUARIO_ID"), 
+		inverseJoinColumns = @JoinColumn(name="PERMISSAO_ID"))
 	public List<Permissao> getPermissoes() {
 		return permissoes;
 	}
 	public void setPermissoes(List<Permissao> permissoes) {
 		this.permissoes = permissoes;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((ident == null) ? 0 : ident.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		if (ident == null) {
-			if (other.ident != null)
-				return false;
-		} else if (!ident.equals(other.ident))
-			return false;
-		return true;
 	}
 }

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wsacademico.api.event.RecursoCriadoEvent;
-import com.wsacademico.api.model.Pessoa;
+import com.wsacademico.api.model.comum.Pessoa;
 import com.wsacademico.api.repository.PessoaRepository;
 import com.wsacademico.api.service.PessoaService;
 

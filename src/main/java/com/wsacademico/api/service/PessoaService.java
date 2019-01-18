@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.wsacademico.api.model.Pessoa;
+import com.wsacademico.api.model.comum.Pessoa;
 import com.wsacademico.api.repository.PessoaRepository;
 
 @Service

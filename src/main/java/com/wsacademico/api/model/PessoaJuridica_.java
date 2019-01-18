@@ -4,8 +4,8 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(InformacoesPessoa.class)
-public abstract class InformacoesPessoa_ {
+@StaticMetamodel(PessoaJuridica.class)
+public abstract class PessoaJuridica_ extends com.wsacademico.api.model.comum.Pessoa_ {
 
 
 
